@@ -1,26 +1,21 @@
 import React from 'react';
-import {Link, Outlet} from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
+import { navbar } from '../constants';
+import logo from "../assets/Logo.png"
 const Navbar = () => {
      return (
        <div>
-         <div className="bg-gray-500">
+         <div className="bg-gray-500 flex justify-around items-center p-[10px] ">
            <div className="">
-             <h2>Logo</h2>
+             <img src={logo} alt="Logo" className='w-[50px] md:w-[60px]' />
            </div>
            <div className="">
-             <ul>
-               <Link to="/home">
-                 <li>Home</li>
-               </Link>
-               <Link to="/menu">
-                 <li>Menu</li>
-               </Link>
-               <Link to="/about">
-                 <li>About Us</li>
-               </Link>
-               <Link to="/contact">
-                 <li>Contact</li>
-               </Link>
+             <ul className='flex'>
+               {navbar.map((nav, index) => (
+                   <li key={index} className='mr-[10px] txt-white'>
+                   <Link to={nav.id}>{ nav.name }</Link>
+                </li>
+               ) )}
              </ul>
            </div>
            <div className="">
